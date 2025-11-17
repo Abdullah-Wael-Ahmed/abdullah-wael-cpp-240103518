@@ -1,0 +1,85 @@
+Question 3
+
+initial
+
+
+Before change:
+
+top = -1
+stack = []
+
+After change:
+
+top = -1
+stack = []
+
+push(5)
+
+Before Change:
+
+top = 0
+stack = [5]
+
+After change: 
+
+top = 0
+stack = [5]
+
+push(6)
+
+Before change:
+
+top = 1
+stack = [5, 6]
+
+After change:
+
+top = 1
+stack = [5, 6]
+
+pop()
+
+Before change:
+
+top = 0
+stack = [5]
+return = 6
+
+After change:
+
+top = 0
+stack = [5]
+return = 6
+
+pop()
+
+Before Change:
+
+top = -1
+stack = []
+return = 5
+
+After change:
+
+top = 0
+stack = [5]
+return = -999
+
+// Here when doing pop is empty returned true because the top is 0 but really one element is stuck 
+
+pop()
+
+Before change:
+
+top = -1
+stack = []
+return = -999
+
+After change:
+
+top = 0
+stack = [5]
+return = -999
+
+
+The stack starts normally in both cases when pushing the problem occurs when we start popping because the stack's push is pre increment so it's logical to start from -1, but what's happening now is that the stack is locked out of one space and its current size is smaller by one

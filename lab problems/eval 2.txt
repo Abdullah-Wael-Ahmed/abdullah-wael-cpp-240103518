@@ -1,0 +1,150 @@
+step 0 :
+
+i = not initialized
+x_main = 2
+x_loop = not initialized
+y = 3
+sum = 0
+temp = not initialized
+x global = 0
+
+step 1 :
+i = 0 
+x_main = 2
+x_loop = not initialized
+y = 3
+sum = 0
+temp = not initialized
+x global = 0
+
+step 2 :
+i = 0;
+x_main = 2
+x_loop = 0
+y = 3
+sum = 0
+temp = not initialized
+x global = 0
+
+step 3:
+
+side note in the adjust function callCount is called without a semicolon which would cause an error but I am going to answer as if it was a mistake
+
+i = 0 
+x_main = 2
+x_loop = 0
+y = 3
+sum = 0
+temp = 0
+x global = 0
+
+step 4:
+
+i = 0 
+x_main = 2
+x_loop = 0
+y = 3
+sum = 0
+temp = 0
+x global = 0
+
+step 5:
+
+i = 0 
+x_main = 2
+x_loop = 0
+y = 0
+sum = 0
+temp = 0
+x global = 0
+
+step 6:
+i = 0 
+x_main = 2
+x_loop = 0
+y = 0
+sum = 0
+temp = 0
+x global = 0
+
+cout = 0 0
+
+step 7 :
+i = 1 
+x_main = 2
+x_loop = 0
+y = 0
+sum = 0
+temp = 0
+x global = 0
+
+step 8:
+i = 1 
+x_main = 2
+x_loop = 1
+y = 0
+sum = 0
+temp = 0
+x global = 0
+
+step 9:
+i = 1 
+x_main = 2
+x_loop = 1
+y = 0
+sum = 0
+temp = 1
+x global = 0
+
+step 10:
+i = 1 
+x_main = 2
+x_loop = 1
+y = 0
+sum = 1
+temp = 1
+x global = 0
+
+step 11:
+i = 1 
+x_main = 2
+x_loop = 1
+y = 2
+sum = 1
+temp = 1
+x global = 0
+
+
+step 12 :
+
+i = 1 
+x_main = 2
+x_loop = 1
+y = 2
+sum = 1
+temp = 1
+x global = 0
+
+cout = 1 1
+
+step 13 :
+i = 1 
+x_main = 2
+x_loop = 1
+y = 2
+sum = 1
+temp = 1
+x global = 0
+
+step 14: 
+i = 1 
+x_main = 2
+x_loop = 1
+y = 2
+sum = 1
+temp = 1
+x global = 0
+
+cout = 2 2 0
+
+

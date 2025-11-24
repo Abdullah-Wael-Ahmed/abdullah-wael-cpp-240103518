@@ -25,10 +25,13 @@ public:
 
     void addFromFront(int x)
     {
-        if (head == NULL){
+        if (head == NULL)
+        {
             Node *newNode = new Node(x, NULL);
             head = newNode;
-        } else {
+        }
+        else
+        {
             Node *newNode = new Node(x, head);
             head = newNode;
         }
@@ -43,12 +46,74 @@ public:
         }
         else
         {
-            Node *currrent;
+            Node *currrent = head;
             while (currrent->next != NULL)
             {
                 currrent = currrent->next;
             }
             currrent->next = newNode;
+        }
+    }
+
+    void insert(int x, int pos)
+    {
+        Node *newNode = new Node(x, NULL);
+        Node *p = head;
+        for (int i = 1; i < pos && p->next != NULL; i++)
+        {
+            p = p->next;
+        }
+        newNode->next = p->next;
+        p->next = newNode;
+    }
+
+    void insertBeforeVal(int x, int val)
+    {
+        Node *newNode = new Node(x, NULL);
+        if (head->data == val)
+        {
+            newNode->next = head->next;
+            head = newNode;
+        }
+        else
+        {
+            Node *p = head;
+            while (p->next != NULL)
+            {
+                if (p->next->data == val)
+                {
+                    newNode->next = p->next;
+                    p->next = newNode;
+                    break;
+                }
+                else
+                {
+                    p = p->next;
+                }
+            }
+        }
+    }
+
+    void deleteNode(int pos) {
+        if (head == NULL){
+            cout << "Out of bounds";
+            return;
+        }
+        Node* cursor = head;
+        Node* prev = NULL;
+        if (pos == 0){
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+        for (int i = 0 ; i <= pos && cursor->next != NULL ; i++){
+            if (pos == i){
+                prev->next = cursor->next;
+                delete cursor;
+            } else {
+                prev = cursor;
+                cursor = cursor->next;
+            }
         }
     }
 };

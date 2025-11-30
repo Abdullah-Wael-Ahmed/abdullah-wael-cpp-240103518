@@ -94,7 +94,7 @@ public:
         }
     }
 
-    void deleteNode(int pos) {
+    void deleteNode(int pos) { // one function that deletes from front, back and middle
         if (head == NULL){
             cout << "Out of bounds";
             return;
@@ -110,11 +110,13 @@ public:
             if (pos == i){
                 prev->next = cursor->next;
                 delete cursor;
+                return;
             } else {
                 prev = cursor;
                 cursor = cursor->next;
             }
         }
+        cout << "Out of bounds";
     }
 };
 

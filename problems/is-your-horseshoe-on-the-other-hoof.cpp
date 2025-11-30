@@ -1,7 +1,10 @@
 #include <iostream>
 using namespace std;
 
+// https://codeforces.com/problemset/problem/228/A
+
 int main(){
+
 
     int shoes[4];
     int sum = 0;

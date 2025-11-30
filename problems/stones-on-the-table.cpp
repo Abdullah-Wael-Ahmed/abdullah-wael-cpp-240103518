@@ -2,9 +2,12 @@
 #include <string>
 using namespace std;
 
+// https://codeforces.com/problemset/problem/266/A
+
 int main(){
 
-    int wordLength, sum;
+    
+    int wordLength, sum = 0;
     cin >> wordLength;
     string word;
     cin >> word;

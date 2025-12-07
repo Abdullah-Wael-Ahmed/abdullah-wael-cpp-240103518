@@ -20,7 +20,6 @@ class Tree
 {
 private:
     Node *root;
-    
 
 public:
     Tree()
@@ -77,8 +76,10 @@ public:
         }
     }
 
-    void preOrder(Node* n){
-        if (n == nullptr) return;
+    void preOrder(Node *n)
+    {
+        if (n == nullptr)
+            return;
 
         cout << n->data << " ";
 
@@ -86,76 +87,148 @@ public:
         preOrder(n->right);
     }
 
-    void preOrder(){
+    void preOrder()
+    {
         preOrder(root);
     }
-    
 
-    void inOrder(Node *n){
-        if (n == nullptr) return;
+    void inOrder(Node *n)
+    {
+        if (n == nullptr)
+            return;
 
         inOrder(n->left);
         cout << n->data << " ";
         inOrder(n->right);
     }
-    
-    void inOrder(){
+
+    void inOrder()
+    {
         inOrder(root);
     }
-    
-    void postOrder(Node *n){
-        if (n == nullptr) return;
-        
+
+    void postOrder(Node *n)
+    {
+        if (n == nullptr)
+            return;
+
         postOrder(n->left);
         postOrder(n->right);
         cout << n->data << " ";
     }
 
-    void postOrder(){
+    void postOrder()
+    {
         postOrder(root);
     }
 
-    Node* search(int data) {
-        if (root == nullptr) return nullptr;
+    Node *search(int data)
+    {
+        if (root == nullptr)
+            return nullptr;
 
-        Node* n = root;
+        Node *n = root;
 
-        while(n != nullptr){
-            if (n->data == data) {
+        while (n != nullptr)
+        {
+            if (n->data == data)
+            {
                 return n;
             }
 
-            else if (n->data < data) n = n->right;
-            
-            else n = n->left;
+            else if (n->data < data)
+                n = n->right;
+
+            else
+                n = n->left;
         }
 
         return n;
     }
 
-    Node* findMin(){
-        if (root == nullptr) return nullptr;
+    Node *findMin()
+    {
+        if (root == nullptr)
+            return nullptr;
 
-        Node* n = root;
+        Node *n = root;
 
-        while (n->left != nullptr) {
+        while (n->left != nullptr)
+        {
             n = n->left;
         }
 
         return n;
-
     }
 
-    Node* findMax(){
-        if (root == nullptr) return nullptr;
+    Node *findMax()
+    {
+        if (root == nullptr)
+            return nullptr;
 
-        Node* n = root;
+        Node *n = root;
 
-        while (n->right != nullptr) {
+        while (n->right != nullptr)
+        {
             n = n->right;
         }
 
         return n;
+    }
+
+    void deleteVal(int val)
+    {
+        Node *n = root;
+        Node *parent = nullptr;
+        while (n != nullptr)
+        {
+            if (val > n->data){
+                parent = n;
+                n = n->right;
+            }
+            else if (n->data > val) {
+                parent = n;
+                n = n->left;
+            }
+            else break;
+        }
+        if (n == nullptr) return;
+        if (n->left == nullptr && n->right == nullptr){
+            if (parent != nullptr){
+                if (parent->right == n) parent->right = nullptr;
+                else parent->left = nullptr;
+            }else {
+                root = nullptr;
+            }
+            delete(n);
+        }
+        else if (n->left == nullptr && n->right != nullptr) {
+            if (parent != nullptr){
+                if (parent->right == n) parent->right = n->right;
+                else parent->left = n->right;
+            } else {
+                root = n->right;
+            }
+            delete(n);
+        }
+        else if (n->left != nullptr && n->right == nullptr) {
+            if (parent != nullptr){
+                if (parent->right == n) parent->right = n->left;
+                else parent->left = n->left;
+            } else {
+                root = n->left;
+            }
+            delete(n);
+        }
+        else {
+            Node *replacement = n->left;
+            while (replacement->right != nullptr){
+                replacement = replacement->right;
+            }
+            int data = replacement->data;
+            deleteVal(data);
+            n->data = data;
+        }
     }
 };
 
@@ -170,6 +243,7 @@ int main()
     x->insert(15);
     x->insert(30);
 
-    cout << x->findMax()->data;
+    x->deleteVal(30);
+    // x->postOrder();
     return 0;
 }

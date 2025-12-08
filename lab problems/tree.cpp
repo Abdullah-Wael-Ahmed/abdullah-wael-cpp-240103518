@@ -239,11 +239,15 @@ int main()
     x->insert(5);
     x->insert(20);
     x->insert(1);
-    x->insert(10);
+    x->insert(9);
     x->insert(15);
     x->insert(30);
 
-    x->deleteVal(30);
-    // x->postOrder();
+    
+    x->deleteVal(5);
+    x->postOrder();
+    x->deleteVal(10);
+    cout << endl;
+    x->postOrder();
     return 0;
 }

@@ -18,25 +18,68 @@ private:
     Node* head;
 
 public:
-    // Constructor: Initialize head to null
     DoublyLinkedList() {
-        head = NULL;
+        head = nullptr;
     }
 
     void append(int value) {
         Node* newNode = new Node(value);
 
-        if (head == NULL) {
+        if (head == nullptr) {
             head = newNode;
             return;
         }
 
         Node* temp = head;
-        while (temp->next != NULL) {
+        while (temp->next != nullptr) {
             temp = temp->next;
         }
 
-        temp->next = newNode; 
+        temp->next = newNode;
         newNode->prev = temp; 
     }
+
+    int pop(){
+        if (head == nullptr) return NULL;
+        Node *n = head;
+        while (n->next != nullptr){
+            n = n->next;
+        }
+        n->prev->next = nullptr;
+        int temp = n->data;
+        delete(n);
+        return temp;
+    }
+    
+
+    void print(){
+
+        Node *n = head;
+
+        while (n != nullptr){
+            cout << n->data << " <-> ";
+            n = n->next;
+        }
+
+        cout << endl;
+
+    }
 };
+
+int main(){
+
+    DoublyLinkedList *dl = new DoublyLinkedList();
+
+    dl->append(1);
+    dl->append(2);
+    dl->append(3);
+    dl->append(4);
+    dl->pop();
+    dl->append(5);
+
+
+
+    dl->print();
+
+
+}

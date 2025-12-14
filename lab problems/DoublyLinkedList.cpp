@@ -1,81 +1,126 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
+struct Node
+{
     int data;
-    Node* next;
-    Node* prev;
+    Node *next;
+    Node *prev;
 
-    Node(int val) {
+    Node(int val)
+    {
         data = val;
         next = nullptr;
         prev = nullptr;
     }
 };
 
-class DoublyLinkedList {
+class DoublyLinkedList
+{
 private:
-    Node* head;
+    Node *head;
 
 public:
-    DoublyLinkedList() {
+    DoublyLinkedList()
+    {
         head = nullptr;
     }
 
-    void append(int value) {
-        Node* newNode = new Node(value);
+    void append(int value)
+    {
+        Node *newNode = new Node(value);
 
-        if (head == nullptr) {
+        if (head == nullptr)
+        {
             head = newNode;
             return;
         }
 
-        Node* temp = head;
-        while (temp->next != nullptr) {
+        Node *temp = head;
+        while (temp->next != nullptr)
+        {
             temp = temp->next;
         }
 
         temp->next = newNode;
-        newNode->prev = temp; 
+        newNode->prev = temp;
     }
 
-    int pop(){
-        if (head == nullptr) return NULL;
+    int pop()
+    {
+        if (head == nullptr)
+            return NULL;
         Node *n = head;
-        while (n->next != nullptr){
+        while (n->next != nullptr)
+        {
             n = n->next;
         }
         n->prev->next = nullptr;
         int temp = n->data;
-        delete(n);
+        delete (n);
         return temp;
     }
-    
 
-    // void insert(int val, int pos){
-    //     if (head == nullptr) {
-    //         cout << "out of bound";
-    //         return;
-    //     }
-    //     int i = 0;
-    //     while (i > pos )
-    // }
+    void deleteAt(int pos)
+    {
 
-    void print(){
+        if (head == nullptr || pos < 0)
+        {
+            cout << "Invalid position or empty list." << endl;
+            return;
+        }
+
+        Node *temp = head;
+
+        if (pos == 0)
+        {
+            head = temp->next;
+            if (head != nullptr)
+            {
+                head->prev = nullptr;
+            }
+            delete temp;
+            return;
+        }
+
+        for (int i = 0; temp != nullptr && i < pos; i++)
+        {
+            temp = temp->next;
+        }
+
+        if (temp == nullptr)
+        {
+            cout << "out of bound" << endl;
+            return;
+        }
+
+        temp->prev->next = temp->next;
+
+        if (temp->next != nullptr)
+        {
+            temp->next->prev = temp->prev;
+        }
+
+        delete temp;
+    }
+
+    void print()
+    {
 
         Node *n = head;
 
-        while (n != nullptr){
+        while (n != nullptr)
+        {
             cout << n->data << " <-> ";
             n = n->next;
         }
 
         cout << endl;
-
     }
 };
 
-int main(){
+int main()
+{
 
     DoublyLinkedList *dl = new DoublyLinkedList();
 
@@ -87,6 +132,4 @@ int main(){
     dl->append(5);
 
     dl->print();
-
-
 }

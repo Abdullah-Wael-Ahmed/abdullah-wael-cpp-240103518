@@ -6,12 +6,12 @@ class LinkedList
     struct Node
     {
         int data;
-        Node *next = NULL;
+        Node *next = nullptr;
 
-        Node(int data, Node *next)
+        Node(int d, Node *n)
         {
-            data = data;
-            next = next;
+            data = d;
+            next = n;
         }
     };
 
@@ -20,14 +20,14 @@ public:
 
     LinkedList()
     {
-        head = NULL;
+        head = nullptr;
     }
 
     void addFromFront(int x)
     {
-        if (head == NULL)
+        if (head == nullptr)
         {
-            Node *newNode = new Node(x, NULL);
+            Node *newNode = new Node(x, nullptr);
             head = newNode;
         }
         else
@@ -39,15 +39,15 @@ public:
 
     void addFromBack(int x)
     {
-        Node *newNode = new Node(x, NULL);
-        if (head == NULL)
+        Node *newNode = new Node(x, nullptr);
+        if (head == nullptr)
         {
             head = newNode;
         }
         else
         {
             Node *currrent = head;
-            while (currrent->next != NULL)
+            while (currrent->next != nullptr)
             {
                 currrent = currrent->next;
             }
@@ -57,9 +57,9 @@ public:
 
     void insert(int x, int pos)
     {
-        Node *newNode = new Node(x, NULL);
+        Node *newNode = new Node(x, nullptr);
         Node *p = head;
-        for (int i = 1; i < pos && p->next != NULL; i++)
+        for (int i = 1; i < pos && p->next != nullptr; i++)
         {
             p = p->next;
         }
@@ -69,7 +69,7 @@ public:
 
     void insertBeforeVal(int x, int val)
     {
-        Node *newNode = new Node(x, NULL);
+        Node *newNode = new Node(x, nullptr);
         if (head->data == val)
         {
             newNode->next = head->next;
@@ -78,7 +78,7 @@ public:
         else
         {
             Node *p = head;
-            while (p->next != NULL)
+            while (p->next != nullptr)
             {
                 if (p->next->data == val)
                 {
@@ -95,18 +95,18 @@ public:
     }
 
     void deleteNode(int pos) { // one function that deletes from front, back and middle
-        if (head == NULL){
+        if (head == nullptr){
             cout << "Out of bounds";
             return;
         }
         Node* cursor = head;
-        Node* prev = NULL;
+        Node* prev = nullptr;
         if (pos == 0){
             Node* temp = head;
             head = head->next;
             delete temp;
         }
-        for (int i = 0 ; i <= pos && cursor->next != NULL ; i++){
+        for (int i = 0 ; i <= pos && cursor->next != nullptr ; i++){
             if (pos == i){
                 prev->next = cursor->next;
                 delete cursor;
@@ -117,6 +117,35 @@ public:
             }
         }
         cout << "Out of bounds";
+    }
+
+    void concatinate(LinkedList *ls){
+        if (head == nullptr){
+            head = ls->head;
+            return;
+        }
+        else {
+            Node *tail = head;
+            while(tail->next != nullptr){
+                tail = tail->next;
+            }
+            tail->next = ls->head;
+        }
+    }
+
+    void reverse() {
+        Node* prev = nullptr;
+        Node* current = head;
+        Node* next = nullptr;
+
+        while (current != nullptr) {
+            next = current->next;  // original next
+            current->next = prev;  // set the node nex to prev 
+            prev = current; // preserve this node for next iteration
+            current = next; // set the node to the next
+        }
+
+        head = prev; // set the head to be the tail
     }
 };
 

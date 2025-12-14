@@ -52,6 +52,15 @@ public:
     }
     
 
+    // void insert(int val, int pos){
+    //     if (head == nullptr) {
+    //         cout << "out of bound";
+    //         return;
+    //     }
+    //     int i = 0;
+    //     while (i > pos )
+    // }
+
     void print(){
 
         Node *n = head;
@@ -76,8 +85,6 @@ int main(){
     dl->append(4);
     dl->pop();
     dl->append(5);
-
-
 
     dl->print();
 
